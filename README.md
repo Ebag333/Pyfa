@@ -1,14 +1,16 @@
 # pyfa.fit
 
-_Master_: [![Build Status](https://travis-ci.org/Pyfa-fit/Pyfa.svg?branch=master)](https://travis-ci.org/pyfa-fit/Pyfa) [![Build Status](https://ci.appveyor.com/api/projects/status/6o0qe49yajcg7hyy/branch/master?svg=true)](https://ci.appveyor.com/project/Ebag333/pyfa-nr5qw/branch/master)
+_Master_: [![Build Status](https://travis-ci.org/Pyfa-fit/Pyfa.svg?branch=master)](https://travis-ci.org/pyfa-fit/Pyfa) [![Build Status](https://ci.appveyor.com/api/projects/status/6o0qe49yajcg7hyy/branch/master?svg=true)](https://ci.appveyor.com/project/Ebag333/pyfa-nr5qw/branch/master) [![codecov](https://codecov.io/gh/Pyfa-fit/Pyfa/branch/master/graph/badge.svg)](https://codecov.io/gh/Pyfa-fit/Pyfa)
 
-_Development_: [![Build Status](https://travis-ci.org/Pyfa-fit/Pyfa.svg?branch=development)](https://travis-ci.org/pyfa-fit/Pyfa) [![Build Status](https://ci.appveyor.com/api/projects/status/6o0qe49yajcg7hyy/branch/development?svg=true)](https://ci.appveyor.com/project/Ebag333/pyfa-nr5qw/branch/development)
 
-![pyfa](https://cloud.githubusercontent.com/assets/3904767/10271512/af385ef2-6ade-11e5-8f67-52b8b1e4c797.PNG)
+_Development_: [![Build Status](https://travis-ci.org/Pyfa-fit/Pyfa.svg?branch=development)](https://travis-ci.org/pyfa-fit/Pyfa) [![Build Status](https://ci.appveyor.com/api/projects/status/6o0qe49yajcg7hyy/branch/development?svg=true)](https://ci.appveyor.com/project/Ebag333/pyfa-nr5qw/branch/development) [![codecov](https://codecov.io/gh/Pyfa-fit/Pyfa/branch/development/graph/badge.svg)](https://codecov.io/gh/Pyfa-fit/Pyfa)
+
+
+![pyfa](imgs/pyfa_mainscreen_full.png)
 
 ## What is it?
 
-pyfa, short for **py**thon **f**itting **a**ssistant, allows you to create, experiment with, and save ship fittings without being in game. Open source and written in Python, it is available on any platform where Python 2.x and wxWidgets are available, including Windows, Mac OS X, and Linux.
+pyfa, short for **py**thon **f**itting **a**ssistant, allows you to create, experiment with, and save ship fittings without being in game. Open source and written in Python, it is available on any platform where Python 2.7 and wxWidgets are available, including Windows, OS X, and Linux.
 
 ## Latest Version and Changelogs
 
