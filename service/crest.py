@@ -12,7 +12,7 @@ from eos.saveddata.crestchar import CrestChar
 import gui.globalEvents as GE
 from service.settings import CRESTSettings
 from service.server import StoppableHTTPServer, AuthHandler
-from service.pycrest.eve import EVE
+from pycrest.eve import EVE
 
 pyfalog = Logger(__name__)
 
