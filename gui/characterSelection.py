@@ -157,7 +157,7 @@ class CharacterSelection(wx.Panel):
         if charName:
             sChar.apiFetch(self.getActiveCharacter(), charName, self.refreshAPICallback)
 
-    def refreshAPICallback(self,  e=None):
+    def refreshAPICallback(self, e=None):
         self.btnRefresh.Enable(True)
         if e is None:
             self.refreshCharacterList()

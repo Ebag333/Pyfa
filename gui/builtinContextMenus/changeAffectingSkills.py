@@ -57,7 +57,7 @@ class ChangeAffectingSkills(ContextMenu):
                 continue
 
             for fit, afflictors in cont.getAfflictions(attrName).iteritems():
-                for afflictor, __, __, used in afflictors:
+                for afflictor, __, __, __ in afflictors:
                     # only add Skills
                     if not isinstance(afflictor, Skill):
                         continue
