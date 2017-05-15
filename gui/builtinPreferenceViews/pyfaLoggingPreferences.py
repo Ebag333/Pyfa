@@ -64,16 +64,6 @@ class PFGeneralPref(PreferenceView):
         # so if they try and change it, set it back to the current setting
         self.cbdebugLogging.SetValue(config.debug)
 
-        # In case we do, down there road, here's a bit of a start.
-        '''
-        if self.cbdebugLogging.GetValue() is True:
-            self.cbdebugLogging.SetValue(False)
-            config.Debug = self.cbdebugLogging.GetValue()
-        else:
-            self.cbdebugLogging.SetValue(True)
-        config.Debug = self.cbdebugLogging.GetValue()
-        '''
-
     def getImage(self):
         return BitmapLoader.getBitmap("settings_log", "gui")
 

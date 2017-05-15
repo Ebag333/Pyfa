@@ -1475,7 +1475,7 @@ class FixedPoint(object):
         return _mkFP(_roundquotient(n1 * _tento(p), n2), p)
 
     def __rdiv__(self, other):
-        n1, n2, p = _norm(self, other)
+        __, n2, p = _norm(self, other)
         return _mkFP(n2, p) / self
 
     def __divmod__(self, other):

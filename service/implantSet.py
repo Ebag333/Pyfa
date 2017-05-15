@@ -97,7 +97,7 @@ class ImplantSets(object):
         current = None
         lookup = {}
 
-        for i, line in enumerate(lines):
+        for __, line in enumerate(lines):
             line = line.strip()
             try:
                 if line == '' or line[0] == "#":  # comments / empty string

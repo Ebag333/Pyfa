@@ -821,7 +821,7 @@ class Market(object):
         except TypeError:
             attrIDs = (attribs.ID,)
         info = {}
-        for itemID, typeID, val in eos.db.directAttributeRequest(itemIDs, attrIDs):
+        for itemID, __, val in eos.db.directAttributeRequest(itemIDs, attrIDs):
             info[itemID] = val
 
         return info

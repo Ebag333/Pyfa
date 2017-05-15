@@ -692,26 +692,18 @@ class Module(HandledItem, HandledCharge, ItemAttrShortcut, ChargeAttrShortcut):
         # Module can only fire one shot at a time, think bomb launchers or defender launchers
         if self.disallowRepeatingAction:
             if numShots > 1:
-                """
-                The actual mechanics behind this is complex.  Behavior will be (for 3 ammo):
-                    fire, reactivation delay, fire, reactivation delay, fire, max(reactivation delay, reload)
-                so your effective reload time depends on where you are at in the cycle.
-
-                We can't do that, so instead we'll average it out.
-
-                Currently would apply to bomb launchers and defender missiles
-                """
+                # The actual mechanics behind this is complex.  Behavior will be (for 3 ammo):
+                #     fire, reactivation delay, fire, reactivation delay, fire, max(reactivation delay, reload)
+                # so your effective reload time depends on where you are at in the cycle.
+                # We can't do that, so instead we'll average it out.
+                # Currently would apply to bomb launchers and defender missiles
                 effective_reload_time = ((self.reactivationDelay * (numShots - 1)) + max(raw_reload_time, self.reactivationDelay, 0)) / numShots
             else:
-                """
-                Applies to MJD/MJFG
-                """
+                # Applies to MJD/MJFG
                 effective_reload_time = max(raw_reload_time, self.reactivationDelay, 0)
         else:
-            """
-            Currently no other modules would have a reactivation delay, so for sanities sake don't try and account for it.
-            Okay, technically cloaks do, but they also have 0 cycle time and cap usage so why do you care?
-            """
+            # Currently no other modules would have a reactivation delay, so for sanities sake don't try and account for it.
+            # Okay, technically cloaks do, but they also have 0 cycle time and cap usage so why do you care?
             effective_reload_time = raw_reload_time
 
         if numShots and self.charge:

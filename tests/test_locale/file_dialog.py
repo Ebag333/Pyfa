@@ -1,6 +1,5 @@
 # noinspection PyPackageRequirements
 import wx
-import sys
 import os
 import sys
 
@@ -17,7 +16,7 @@ class MyForm(wx.Frame):
         wx.Frame.__init__(self, None, wx.ID_ANY, "CTRL-O to open, CTRL-S to save", size=(500, 500))
 
         # Add a panel so it looks the correct on all platforms
-        panel = wx.Panel(self, wx.ID_ANY)
+        # panel = wx.Panel(self, wx.ID_ANY)
 
         SAVE_FILE_ID = wx.NewId()
         self.Bind(wx.EVT_MENU, self.saveFile, id=SAVE_FILE_ID)

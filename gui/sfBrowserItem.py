@@ -130,7 +130,7 @@ class PFToolbar(object):
                     button.SetState(state ^ BTN_HOVER)
                     doRefresh = True
 
-            bwidth, bheight = button.GetSize()
+            bwidth, __ = button.GetSize()
             bx += bwidth + self.padding
 
         if not changeCursor:

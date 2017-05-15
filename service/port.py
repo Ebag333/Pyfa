@@ -642,7 +642,7 @@ class Port(object):
                     c.amount = int(amount)
                     f.cargo.append(c)
                 else:
-                    for i in xrange(int(amount)):
+                    for __ in xrange(int(amount)):
                         try:
                             m = Module(item)
                         except:

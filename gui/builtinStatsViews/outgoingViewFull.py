@@ -36,7 +36,7 @@ class OutgoingViewFull(StatsView):
         return "Remote Reps"
 
     def getTextExtentW(self, text):
-        width, height = self.parent.GetTextExtent(text)
+        width, __ = self.parent.GetTextExtent(text)
         return width
 
     def populatePanel(self, contentPanel, headerPanel):
@@ -57,7 +57,7 @@ class OutgoingViewFull(StatsView):
             ("RemoteHull", "Hull:", "hullActive", "Hull hitpoints per second repaired remotely."),
         ]
 
-        for outgoingType, label, image, tooltip in rr_list:
+        for outgoingType, __, image, tooltip in rr_list:
             baseBox = wx.BoxSizer(wx.VERTICAL)
 
             baseBox.Add(BitmapLoader.getStaticBitmap("%s_big" % image, parent, "gui"), 0, wx.ALIGN_CENTER)

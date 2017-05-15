@@ -49,7 +49,7 @@ def handler(fit, module, context):
         # The number of iterations is limited to prevent an infinite loop if something goes wrong.
         cycleList = []
         loopStart = -20
-        for num in range(50):
+        for _ in range(50):
             # pyfalog.debug("Starting cycle %d.", num)
             # The strange order is to emulate the ingame sorting when different types have taken the same amount of damage.
             # This doesn't take into account stacking penalties. In a few cases fitting a Damage Control causes an inaccurate result.

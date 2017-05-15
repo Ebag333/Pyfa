@@ -332,7 +332,7 @@ class NavigationPanel(SFItem.SFBrowserItem):
                 getattr(wx, 'FONTSTYLE_' + general_settings.get('fontStyle'), wx.FONTSTYLE_NORMAL),
                 getattr(wx, 'FONTWEIGHT_' + general_settings.get('fontWeight'), wx.FONTWEIGHT_NORMAL),
         )
-        w, h = size
+        __, h = size
         self.BrowserSearchBox = wx.TextCtrl(self, wx.ID_ANY, "", wx.DefaultPosition,
                                             (-1, h - 2 if 'wxGTK' in wx.PlatformInfo else - 1),
                                             wx.TE_PROCESS_ENTER | (wx.BORDER_NONE if 'wxGTK' in wx.PlatformInfo else 0))

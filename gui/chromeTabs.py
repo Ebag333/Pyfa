@@ -1077,16 +1077,16 @@ class PFTabsContainer(wx.Panel):
                 rightTab = self.GetTabAtRight(index)
 
                 if leftTab:
-                    lw, lh = leftTab.GetSize()
-                    lx, ly = leftTab.GetPosition()
+                    lw, __ = leftTab.GetSize()
+                    lx, __ = leftTab.GetPosition()
 
                     if lx + lw / 2 - self.inclination * 2 > dtx:
                         self.SwitchTabs(index - 1, index, self.draggedTab)
                         return
 
                 if rightTab:
-                    rw, rh = rightTab.GetSize()
-                    rx, ry = rightTab.GetPosition()
+                    rw, __ = rightTab.GetSize()
+                    rx, __ = rightTab.GetPosition()
 
                     if rx + rw / 2 + self.inclination * 2 < dtx + w:
                         self.SwitchTabs(index + 1, index, self.draggedTab)
@@ -1404,7 +1404,7 @@ class PFNotebookPagePreview(wx.Frame):
         )
         self.SetFont(self.hfont)
 
-        tx, ty = self.GetTextExtent(self.title)
+        tx, __ = self.GetTextExtent(self.title)
         tx += self.padding * 2
 
         if bitmap.GetWidth() < tx:

@@ -61,7 +61,7 @@ def DrawGradientBar(width, height, gStart, gEnd, gMid=None, fillRatio=4):
 
 def GetPartialText(dc, text, maxWidth, defEllipsis="..."):
     ellipsis = defEllipsis
-    base_w, h = dc.GetTextExtent(ellipsis)
+    base_w, _ = dc.GetTextExtent(ellipsis)
 
     lenText = len(text)
     drawntext = text
