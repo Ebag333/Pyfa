@@ -4,16 +4,15 @@
 # This must be done on every test in order to pass in Travis
 import os
 import sys
-from copy import deepcopy
 
 sys.path.append(os.path.realpath(os.getcwd()))
 
 # noinspection PyPackageRequirements
-from _development.helpers import DBInMemory as DB, Gamedata, Saveddata
-from _development.helpers_fits import RifterFit, KeepstarFit, HeronFit
+from _development.helpers import DBInMemory as DB, Gamedata, Saveddata  # noqa: E402, E401
+from _development.helpers_fits import RifterFit, KeepstarFit, HeronFit  # noqa: E402, E401
 
 
-def test_calculateModifiedAttributes(DB, RifterFit, KeepstarFit):
+def test_calculateModifiedAttributes(DB, RifterFit, KeepstarFit):  # noqa: F811
     rifter_modifier_dicts = {
         '_ModifiedAttributeDict__affectedBy'          : 26,
         '_ModifiedAttributeDict__forced'              : 0,
@@ -60,7 +59,7 @@ def test_calculateModifiedAttributes(DB, RifterFit, KeepstarFit):
         assert len(getattr(KeepstarFit.ship.itemModifiedAttributes, test_dict)) == keepstar_modifier_dicts[test_dict]
 
 
-def test_calculateModifiedAttributes_withBooster(DB, RifterFit, HeronFit):
+def test_calculateModifiedAttributes_withBooster(DB, RifterFit, HeronFit):  # noqa: F811
     # TODO: This test is not currently functional or meaningful as projections are not happening correctly.
     # This is true for all tested branches (master, dev, etc)
     rifter_modifier_dicts = {
@@ -81,15 +80,15 @@ def test_calculateModifiedAttributes_withBooster(DB, RifterFit, HeronFit):
         assert len(getattr(RifterFit.ship.itemModifiedAttributes, test_dict)) == 0
 
     # Get base stats
-    max_target_range_1 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
-    scan_resolution_1 = RifterFit.ship.getModifiedItemAttr('scanResolution')
+    # max_target_range_1 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
+    # scan_resolution_1 = RifterFit.ship.getModifiedItemAttr('scanResolution')
 
     RifterFit.clear()
     RifterFit.calculateFitAttributes()
 
     # Get self calculated stats
-    max_target_range_2 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
-    scan_resolution_2 = RifterFit.ship.getModifiedItemAttr('scanResolution')
+    # max_target_range_2 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
+    # scan_resolution_2 = RifterFit.ship.getModifiedItemAttr('scanResolution')
 
     RifterFit.clear()
     # Project Heron fit onto Rifter
@@ -102,23 +101,23 @@ def test_calculateModifiedAttributes_withBooster(DB, RifterFit, HeronFit):
     RifterFit.calculateFitAttributes()
 
     # Get stats with projections
-    max_target_range_3 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
-    scan_resolution_3 = RifterFit.ship.getModifiedItemAttr('scanResolution')
+    # max_target_range_3 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
+    # scan_resolution_3 = RifterFit.ship.getModifiedItemAttr('scanResolution')
 
     RifterFit.clear()
     RifterFit.calculateFitAttributes(withBoosters=True)
 
     # Get stats with projections
-    max_target_range_4 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
-    scan_resolution_4 = RifterFit.ship.getModifiedItemAttr('scanResolution')
+    # max_target_range_4 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
+    # scan_resolution_4 = RifterFit.ship.getModifiedItemAttr('scanResolution')
 
     RifterFit.clear()
     HeronFit.calculateFitAttributes(targetFit=RifterFit, withBoosters=True)
     RifterFit.calculateFitAttributes(withBoosters=True)
 
     # Get stats with projections
-    max_target_range_5 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
-    scan_resolution_5 = RifterFit.ship.getModifiedItemAttr('scanResolution')
+    # max_target_range_5 = RifterFit.ship.getModifiedItemAttr('maxTargetRange')
+    # scan_resolution_5 = RifterFit.ship.getModifiedItemAttr('scanResolution')
 
     for test_dict in rifter_modifier_dicts:
         assert len(getattr(RifterFit.ship.itemModifiedAttributes, test_dict)) == rifter_modifier_dicts[test_dict]

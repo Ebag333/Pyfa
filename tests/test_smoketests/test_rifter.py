@@ -6,12 +6,12 @@ import sys
 sys.path.append(os.path.realpath(os.getcwd()))
 
 # noinspection PyPackageRequirements
-from _development.helpers import DBInMemory as DB, Gamedata, Saveddata
-from _development.helpers_fits import RifterFit
+from _development.helpers import DBInMemory as DB, Gamedata, Saveddata  # noqa: E402, E401
+from _development.helpers_fits import RifterFit  # noqa: E402, E401
 
 
 # noinspection PyShadowingNames
-def test_rifter_empty_char0(DB, Saveddata, RifterFit):
+def test_rifter_empty_char0(DB, Saveddata, RifterFit):  # noqa: F811
     """
     We test an empty ship because if we use this as a base for testing our V skills,
     and CCP ever fucks with the base states, all our derived stats will be wrong.
@@ -111,7 +111,7 @@ def test_rifter_empty_char0(DB, Saveddata, RifterFit):
 
 
 # noinspection PyShadowingNames
-def test_rifter_empty_char5(DB, Saveddata, RifterFit):
+def test_rifter_empty_char5(DB, Saveddata, RifterFit):  # noqa: F811
     """
     Test char skills applying to a ship
     """
@@ -210,7 +210,7 @@ def test_rifter_empty_char5(DB, Saveddata, RifterFit):
 
 
 # noinspection PyShadowingNames
-def test_rifter_coprocessor(DB, Saveddata, RifterFit):
+def test_rifter_coprocessor(DB, Saveddata, RifterFit):  # noqa: F811
     char5 = Saveddata['Character'].getAll5()
     char0 = Saveddata['Character'].getAll0()
 

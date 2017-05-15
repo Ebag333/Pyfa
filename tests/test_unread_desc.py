@@ -9,17 +9,12 @@ import os
 import sys
 # nopep8
 import re
-# from utils.strfunctions import sequential_rep, replace_ltgt
-#from utils.stopwatch import Stopwatch
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.realpath(os.path.join(script_dir, '..')))
 sys._called_from_test = True  # need db open for tests. (see eos/config.py#17
 # noinspection PyPep8
-from service.port import Port, IPortUser
-#
-# noinspection PyPackageRequirements
-# from _development.helpers import DBInMemory as DB
+from service.port import Port, IPortUser  # noqa: E402
 
 """
 NOTE:
@@ -49,14 +44,13 @@ for local coverage:
     py.test --cov=./ --cov-report=html
 """
 
+
 class PortUser(IPortUser):
 
     def on_port_processing(self, action, data=None):
         print(data)
         return True
 
-
-#stpw = Stopwatch('test measurementer')
 
 @pytest.fixture()
 def print_db_info():
@@ -79,10 +73,8 @@ def test_import_xml(print_db_info):
     with open(os.path.join(script_dir, xml_file), "r") as file_:
         srcString = file_.read()
         srcString = unicode(srcString, "utf-8")
-        #  (basestring, IPortUser, basestring) -> list[eos.saveddata.fit.Fit]
+        # (basestring, IPortUser, basestring) -> list[eos.saveddata.fit.Fit]
         usr.on_port_process_start()
-        #stpw.reset()
-        #with stpw:
         fits = Port.importXml(srcString, usr)
         fit_length = len(fits)
 

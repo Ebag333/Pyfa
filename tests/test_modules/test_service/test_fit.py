@@ -5,13 +5,13 @@ import sys
 sys.path.append(os.path.realpath(os.getcwd()))
 
 # noinspection PyPackageRequirements
-from _development.helpers import DBInMemory as DB, Gamedata, Saveddata
+from _development.helpers import DBInMemory as DB, Gamedata, Saveddata  # noqa: E402, E401
 # noinspection PyPackageRequirements
-from _development.helpers_fits import RifterFit, KeepstarFit
-from service.fit import Fit
+from _development.helpers_fits import RifterFit, KeepstarFit  # noqa: E402, E401
+from service.fit import Fit  # noqa: E402, E401
 
 
-def test_getAllFits(DB, RifterFit, KeepstarFit):
+def test_getAllFits(DB, RifterFit, KeepstarFit):  # noqa: F811
     assert len(Fit.getAllFits()) == 0
 
     DB['db'].save(RifterFit)
@@ -25,7 +25,7 @@ def test_getAllFits(DB, RifterFit, KeepstarFit):
     DB['db'].remove(KeepstarFit)
 
 
-def test_getFitsWithShip_RifterFit(DB, RifterFit):
+def test_getFitsWithShip_RifterFit(DB, RifterFit):  # noqa: F811
     DB['db'].save(RifterFit)
 
     assert Fit.getFitsWithShip(587)[0][1] == 'My Rifter Fit'

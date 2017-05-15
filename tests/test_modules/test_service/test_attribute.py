@@ -5,7 +5,7 @@ import sys
 
 sys.path.append(os.path.realpath(os.getcwd()))
 
-from service.attribute import Attribute
+from service.attribute import Attribute  # noqa: E402, E401
 
 
 def test_attribute():

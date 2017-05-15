@@ -22,7 +22,7 @@ import threading
 from sqlalchemy import MetaData
 
 from eos.db.sqlAlchemyHandler import session_engine_factory
-import migration
+import migration  # noqa: F401
 from eos import config
 from logbook import Logger
 
@@ -66,16 +66,48 @@ sd_lock = threading.RLock()
 
 # Import all the definitions for all our database stuff
 # noinspection PyPep8
-from eos.db.gamedata import alphaClones, attribute, category, effect, group, icon, item, marketGroup, metaData, metaGroup, traits, unit
+from eos.db.gamedata import (  # noqa: E402,F401
+    alphaClones,
+    attribute,
+    category,
+    effect,
+    group,
+    icon,
+    item,
+    marketGroup,
+    metaData,
+    metaGroup,
+    traits,
+    unit,
+)
 # noinspection PyPep8
-from eos.db.saveddata import booster, cargo, character, crest, damagePattern, databaseRepair, drone, fighter, fit, implant, implantSet, loadDefaultDatabaseValues, \
-    miscData, module, override, price, skill, targetResists, user
+from eos.db.saveddata import (  # noqa: E402,F401
+    booster,
+    cargo,
+    character,
+    crest,
+    damagePattern,
+    databaseRepair,
+    drone,
+    fighter,
+    fit,
+    implant,
+    implantSet,
+    loadDefaultDatabaseValues,
+    miscData,
+    module,
+    override,
+    price,
+    skill,
+    targetResists,
+    user,
+)
 
 # Import queries
 # noinspection PyPep8
-from eos.db.gamedata.queries import *
+from eos.db.gamedata.queries import *  # noqa: F401, F402, F403
 # noinspection PyPep8
-from eos.db.saveddata.queries import *
+from eos.db.saveddata.queries import *  # noqa: F401, F402, F403
 
 # If using in memory saveddata, you'll want to reflect it so the data structure is good.
 if config.saveddata_connectionstring == "sqlite:///:memory:":

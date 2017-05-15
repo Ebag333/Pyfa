@@ -5,7 +5,7 @@ import sys
 
 sys.path.append(os.path.realpath(os.getcwd()))
 
-from gui.aboutData import versionString, licenses, developers, credits, description
+from gui.aboutData import versionString, licenses, developers, credits, description  # noqa: E402, E401
 
 
 def test_aboutData():

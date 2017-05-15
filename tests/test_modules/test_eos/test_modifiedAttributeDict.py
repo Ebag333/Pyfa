@@ -7,18 +7,18 @@ import sys
 sys.path.append(os.path.realpath(os.getcwd()))
 
 # noinspection PyPackageRequirements
-from _development.helpers import DBInMemory as DB, Gamedata, Saveddata
-from _development.helpers_fits import RifterFit
+from _development.helpers import DBInMemory as DB, Gamedata, Saveddata  # noqa: E402, E401
+from _development.helpers_fits import RifterFit  # noqa: E402, E401
 
 
-def test_multiply_stacking_penalties(DB, Saveddata, RifterFit):
+def test_multiply_stacking_penalties(DB, Saveddata, RifterFit):  # noqa: F811
     """
     Tests the stacking penalties under multiply
     """
     char0 = Saveddata['Character'].getAll0()
 
     RifterFit.character = char0
-    starting_em_resist = RifterFit.ship.getModifiedItemAttr("shieldEmDamageResonance")
+    em_resist = RifterFit.ship.getModifiedItemAttr("shieldEmDamageResonance")
 
     mod = Saveddata['Module'](DB['db'].getItem("EM Ward Amplifier II"))
     item_modifer = mod.item.getAttribute("emDamageResistanceBonus")
