@@ -697,6 +697,7 @@ class FittingView(d.Display):
         try:
             fit = sFit.getFit(self.activeFitID)
         except Exception as e:
+            fit = None
             pyfalog.critical("Failed to get fit")
             pyfalog.critical(e)
 

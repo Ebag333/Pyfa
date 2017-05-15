@@ -47,8 +47,7 @@ class SettingsProvider(object):
                     os.mkdir(self.BASE_PATH)
         except OSError:
             pyfalog.warning("Could not create settings path.")
-            self.BASE_PATH = False
-        self.BASE_PATH = ""
+            self.BASE_PATH = ""
 
     def getSettings(self, area, defaults=None):
 
