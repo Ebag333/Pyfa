@@ -5,7 +5,7 @@ skip_branch_with_pr: true
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  - ps: Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_BRANCH.$(Get-Date -format yyyy.mm.dd).$env:appveyor_build_number"
+  - ps: Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_BRANCH.$(Get-Date -format yyyy.MM.dd).$env:appveyor_build_number"
 
   - ECHO " "
   - ECHO "------------------------"

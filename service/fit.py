@@ -170,9 +170,22 @@ class Fit(object):
 
         # refresh any fits this fit is projected onto. Otherwise, if we have
         # already loaded those fits, they will not reflect the changes
+
+        # A note on refreshFits: we collect the target fits in a set because
+        # if a target fit has the same fit for both projected and command,
+        # it will be refreshed first during the projected loop and throw an
+        # error during the command loop
+        refreshFits = set()
         for projection in fit.projectedOnto.values():
             if projection.victim_fit in eos.db.saveddata_session:  # GH issue #359
-                eos.db.saveddata_session.refresh(projection.victim_fit)
+                refreshFits.add(projection.victim_fit)
+
+        for booster in fit.boostedOnto.values():
+            if booster.boosted_fit in eos.db.saveddata_session:  # GH issue #359
+                refreshFits.add(booster.boosted_fit)
+
+        for fit in refreshFits:
+            eos.db.saveddata_session.refresh(fit)
 
     def copyFit(self, fitID):
         pyfalog.debug("Creating copy of fit ID: {0}", fitID)
@@ -244,6 +257,9 @@ class Fit(object):
 
         if fit and fit not in self.fit_pointer_list:
             self.fit_pointer_list.append(fit)
+
+        if fit is None:
+            return None
 
         if basic:
             return fit
@@ -513,14 +529,26 @@ class Fit(object):
         else:
             return None
 
-    def removeModule(self, fitID, position):
-        pyfalog.debug("Removing module from position ({0}) for fit ID: {1}", position, fitID)
-        fit = self.getFit(fitID, basic=True)
-        if fit.modules[position].isEmpty:
+    def removeModule(self, fitID, positions):
+        """Removes modules based on a number of positions."""
+        pyfalog.debug("Removing module from position ({0}) for fit ID: {1}", positions, fitID)
+        fit = eos.db.getFit(fitID)
+
+        # Convert scalar value to list
+        if not isinstance(positions, list):
+            positions = [positions]
+
+        modulesChanged = False
+        for x in positions:
+            if not fit.modules[x].isEmpty:
+                fit.modules.toDummy(x)
+                modulesChanged = True
+
+        # if no modules have changes, report back None
+        if not modulesChanged:
             return None
 
         numSlots = len(fit.modules)
-        fit.modules.toDummy(position)
         self.recalc(fit)
         self.checkStates(fit, None)
         fit.fill()

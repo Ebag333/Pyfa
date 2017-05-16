@@ -690,7 +690,8 @@ class MainFrame(wx.Frame, IPortUser):
     def ItemSelect(self, event):
         selItem = self.itemSelect.index(event.GetId())
 
-        if selItem < len(self.marketBrowser.itemView.active):
+        activeListing = getattr(self.marketBrowser.itemView, 'active', None)
+        if activeListing and selItem < len(activeListing):
             wx.PostEvent(self, ItemSelected(itemID=self.marketBrowser.itemView.active[selItem].ID))
 
     def CTabNext(self, event):
